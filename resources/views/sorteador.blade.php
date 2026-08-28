@@ -39,8 +39,8 @@
                     <button class="srt-aba is-ativa" data-alvo="numeros">Números</button>
                     <button class="srt-aba" data-alvo="nomes">Nomes</button>
                     <button class="srt-aba" data-alvo="equipes">Equipes</button>
-                    @if (count($campanhas))
-                        <button class="srt-aba" data-alvo="campanha">Campanha</button>
+                    @if ($ehAdmin && count($campanhas))
+                        <button class="srt-aba" data-alvo="campanha">Campanha 🔒</button>
                     @endif
                 </div>
 
@@ -111,7 +111,7 @@
                 </section>
 
                 {{-- ============ CAMPANHA ============ --}}
-                @if (count($campanhas))
+                @if ($ehAdmin && count($campanhas))
                     <section class="srt-painel" id="painel-campanha">
                         <label class="srt-rotulo">Sortear entre quem já pagou as cotas</label>
                         <select id="campanhaId" class="srt-select">
@@ -127,8 +127,8 @@
                         </div>
 
                         <p class="srt-aviso">
-                            Só entram as cotas <b>pagas</b>. O sorteio é feito no servidor e gera um
-                            código de conferência.
+                            <b>Área do organizador.</b> Só entram as cotas <b>pagas</b>. O sorteio é
+                            feito no servidor e gera um código de conferência.
                         </p>
 
                         <button class="srt-botao" id="btnCampanha">🏆 Sortear ganhador</button>

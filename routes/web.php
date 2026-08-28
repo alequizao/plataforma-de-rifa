@@ -68,6 +68,8 @@ Route::middleware(['check'])->group(function () {
 
         // Tutoriais em vídeo — o controller já tinha os métodos, faltava registrar as rotas
         // Aparência do site (cores + tema claro/escuro)
+        // Sortear entre os participantes de uma campanha é ação do organizador
+        Route::post('/sorteador/participantes', 'SorteadorController@participantes')->name('sorteador.participantes');
         Route::get('versoes', 'HomeAdminController@versoes')->name('versoes');
         Route::get('aparencia', 'HomeAdminController@aparencia')->name('aparencia');
         Route::post('aparencia', 'HomeAdminController@aparenciaSalvar')->name('aparencia.salvar');
@@ -162,9 +164,8 @@ Route::middleware(['check'])->group(function () {
     Route::get('/', 'ProductController@index')->name('inicio');
     Route::get('/sorteios', 'ProductController@sorteios')->name('sorteios');
 
-    // Sorteador público (números, nomes, equipes e participantes das campanhas)
+    // Sorteador: números, nomes e equipes são públicos (ferramenta aberta).
     Route::get('/sorteador', 'SorteadorController@index')->name('sorteador');
-    Route::post('/sorteador/participantes', 'SorteadorController@participantes')->name('sorteador.participantes');
     Route::get('/sitemap.xml', 'ProductController@sitemap')->name('sitemap');
     Route::get('sorteio/{id}/{tokenAfiliado?}', 'ProductController@product')->name('product');
     Route::get('resumo-rifa/{id}', 'MySweepstakesController@resumoRifa')->name('resumoRifa');

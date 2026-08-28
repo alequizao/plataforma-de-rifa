@@ -163,6 +163,12 @@
                             </li>
                         @endif
                         <li class="nav-item">
+                            <a href="{{ route('sorteador') }}" target="_blank" class="nav-link">
+                                <i class="nav-icon bi bi-dice-5"></i>
+                                <p>Sorteador</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('versoes') }}" class="nav-link {{ request()->is('versoes*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-clock-history"></i>
                                 <p>Versões</p>

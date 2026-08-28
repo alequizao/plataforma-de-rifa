@@ -21,11 +21,16 @@ class SorteadorController extends Controller
     /** Página pública do sorteador. */
     public function index()
     {
-        $campanhas = Product::where('visible', '=', 1)
-            ->orderBy('id', 'desc')
-            ->get(['id', 'name', 'slug', 'status']);
+        // A aba que sorteia o ganhador de uma campanha é restrita ao
+        // organizador: o visitante comum só vê números, nomes e equipes.
+        $ehAdmin = \Illuminate\Support\Facades\Auth::check();
+
+        $campanhas = $ehAdmin
+            ? Product::where('visible', '=', 1)->orderBy('id', 'desc')->get(['id', 'name', 'slug', 'status'])
+            : collect();
 
         return view('sorteador', [
+            'ehAdmin'   => $ehAdmin,
             'campanhas' => $campanhas,
             'config'    => Environment::find(1),
         ]);

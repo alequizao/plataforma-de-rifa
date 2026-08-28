@@ -11,10 +11,21 @@
 
 return [
 
-    'atual' => '2.2.0',
+    'atual' => '2.2.1',
     'data'  => '2026-08-28',
 
     'historico' => [
+
+        [
+            'versao' => '2.2.1',
+            'data'   => '2026-08-28',
+            'titulo' => 'Correção de segurança no Sorteador',
+            'tipo'   => 'correcao',
+            'itens'  => [
+                ['tipo' => 'corrigido', 'txt' => 'O sorteio entre os participantes de uma campanha estava aberto ao público: qualquer visitante poderia sortear o ganhador da rifa. Agora exige login de organizador, tanto na tela quanto no servidor.'],
+                ['tipo' => 'melhoria', 'txt' => 'Atalho para o Sorteador no menu do painel.'],
+            ],
+        ],
 
         [
             'versao' => '2.2.0',
