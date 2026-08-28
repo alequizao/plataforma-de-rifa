@@ -161,6 +161,10 @@ Route::middleware(['check'])->group(function () {
 
     Route::get('/', 'ProductController@index')->name('inicio');
     Route::get('/sorteios', 'ProductController@sorteios')->name('sorteios');
+
+    // Sorteador público (números, nomes, equipes e participantes das campanhas)
+    Route::get('/sorteador', 'SorteadorController@index')->name('sorteador');
+    Route::post('/sorteador/participantes', 'SorteadorController@participantes')->name('sorteador.participantes');
     Route::get('/sitemap.xml', 'ProductController@sitemap')->name('sitemap');
     Route::get('sorteio/{id}/{tokenAfiliado?}', 'ProductController@product')->name('product');
     Route::get('resumo-rifa/{id}', 'MySweepstakesController@resumoRifa')->name('resumoRifa');

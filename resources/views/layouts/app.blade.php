@@ -238,6 +238,8 @@
                                             class="icone bi bi-stars"></i> Campanhas</a></li>
                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#consultar-reservas">Meus
                                         títulos</a></li>
+                                <li><a class="{{ request()->is('sorteador') ? 'active' : '' }}"
+                                        href="{{ route('sorteador') }}">Sorteador</a></li>
                                 @if (env('AFILIADOS'))
                                     <li><a href="{{ route('afiliado.home') }}">Afiliados</a></li>
                                 @endif
@@ -301,6 +303,9 @@
                                                 números</span></a></li>
                                     <li><a class="mobile-menu-link" href="{{ route('ganhadores') }}"><i
                                                 class="bi bi-trophy mobile-menu-icon"></i><span>Ganhadores</span></a>
+                                    </li>
+                                    <li><a class="mobile-menu-link" href="{{ route('sorteador') }}"><i
+                                                class="bi bi-dice-5 mobile-menu-icon"></i><span>Sorteador</span></a>
                                     </li>
                                 </ul>
                             </section>

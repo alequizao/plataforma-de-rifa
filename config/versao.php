@@ -11,10 +11,24 @@
 
 return [
 
-    'atual' => '2.1.0',
+    'atual' => '2.2.0',
     'data'  => '2026-08-28',
 
     'historico' => [
+
+        [
+            'versao' => '2.2.0',
+            'data'   => '2026-08-28',
+            'titulo' => 'Sorteador próprio e site indexável no Google',
+            'tipo'   => 'menor',
+            'itens'  => [
+                ['tipo' => 'novo', 'txt' => 'Aba Sorteador: sorteio de números, de nomes (com suplentes), formação de equipes e sorteio entre os participantes de uma campanha.'],
+                ['tipo' => 'novo', 'txt' => 'Cada resultado sai com data, hora e código de conferência, e pode ser copiado pronto para publicar no grupo.'],
+                ['tipo' => 'corrigido', 'txt' => 'O site inteiro estava bloqueado para o Google por um meta robots noindex.'],
+                ['tipo' => 'novo', 'txt' => 'Sitemap automático, robots.txt, descrições, Open Graph e dados estruturados para buscadores e assistentes de IA.'],
+                ['tipo' => 'corrigido', 'txt' => 'Tokens de pagamento que estavam escritos dentro do código foram removidos.'],
+            ],
+        ],
 
         [
             'versao' => '2.1.0',
