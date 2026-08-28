@@ -1405,4 +1405,48 @@ if (!$envioWpp['ok']) {
             return response('OK', 200)->header('Content-Type', 'text/plain');
         }
     }
+
+    /**
+     * Sitemap XML — lista as páginas públicas e as campanhas ativas
+     * para o Google e demais buscadores encontrarem tudo.
+     */
+    public function sitemap()
+    {
+        $base = rtrim(url('/'), '/');
+
+        $urls = [
+            ['loc' => $base . '/',             'prio' => '1.0', 'freq' => 'daily'],
+            ['loc' => $base . '/sorteios',     'prio' => '0.9', 'freq' => 'daily'],
+            ['loc' => $base . '/ganhadores',   'prio' => '0.8', 'freq' => 'weekly'],
+            ['loc' => $base . '/politica-privacidade', 'prio' => '0.3', 'freq' => 'yearly'],
+        ];
+
+        $produtos = \App\Models\Product::where('visible', '=', 1)
+            ->orderBy('id', 'desc')->get();
+
+        foreach ($produtos as $p) {
+            $urls[] = [
+                'loc'  => $base . '/sorteio/' . $p->slug,
+                'prio' => $p->status == 'Ativo' ? '0.9' : '0.5',
+                'freq' => $p->status == 'Ativo' ? 'daily' : 'monthly',
+                'mod'  => $p->updated_at ? date('Y-m-d', strtotime($p->updated_at)) : null,
+            ];
+        }
+
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n"
+             . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+
+        foreach ($urls as $u) {
+            $xml .= "  <url>\n    <loc>" . htmlspecialchars($u['loc']) . "</loc>\n";
+            if (!empty($u['mod'])) {
+                $xml .= "    <lastmod>" . $u['mod'] . "</lastmod>\n";
+            }
+            $xml .= "    <changefreq>" . $u['freq'] . "</changefreq>\n"
+                 .  "    <priority>" . $u['prio'] . "</priority>\n  </url>\n";
+        }
+
+        $xml .= '</urlset>';
+
+        return response($xml, 200)->header('Content-Type', 'application/xml; charset=UTF-8');
+    }
 }

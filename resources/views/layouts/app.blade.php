@@ -16,8 +16,54 @@
     <meta name="contact" content="alequizao.dev@gmail.com">
     <link rel="me" href="https://instagram.com/alequizao">
 
-    <meta name="robots" content="noindex">
-    <meta name="googlebot" content="noindex">
+    {{-- Indexação: o site é público e deve aparecer nas buscas --}}
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="googlebot" content="index, follow">
+
+    <meta name="description" content="@yield('metaDescription', 'Participe das nossas rifas e sorteios online. Escolha seus números, pague por PIX e receba a confirmação na hora pelo WhatsApp.')">
+    <link rel="canonical" href="{{ url()->current() }}">
+
+    {{-- Open Graph / redes sociais --}}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="{{ @$data['social']->name }}">
+    <meta property="og:title" content="@yield('ogTitle', @$data['social']->name)">
+    <meta property="og:description" content="@yield('metaDescription', 'Participe das nossas rifas e sorteios online. Escolha seus números, pague por PIX e receba a confirmação na hora pelo WhatsApp.')">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:locale" content="pt_BR">
+    @if (@$data['social']->logo)
+        <meta property="og:image" content="{{ asset('products/' . @$data['social']->logo) }}">
+    @endif
+    <meta name="twitter:card" content="summary_large_image">
+
+    {{-- Dados estruturados: ajudam Google e assistentes de IA a entender o site --}}
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@graph' => [
+            [
+                '@type' => 'Organization',
+                '@id' => url('/') . '#organizacao',
+                'name' => @$data['social']->name ?: config('app.name'),
+                'url' => url('/'),
+                'logo' => @$data['social']->logo ? asset('products/' . @$data['social']->logo) : null,
+                'sameAs' => array_values(array_filter([
+                    @$data['social']->instagram ? 'https://instagram.com/' . @$data['social']->instagram : null,
+                    @$data['social']->facebook ? 'https://facebook.com/' . @$data['social']->facebook : null,
+                ])),
+            ],
+            [
+                '@type' => 'WebSite',
+                '@id' => url('/') . '#site',
+                'url' => url('/'),
+                'name' => @$data['social']->name ?: config('app.name'),
+                'inLanguage' => 'pt-BR',
+                'publisher' => ['@id' => url('/') . '#organizacao'],
+            ],
+        ],
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+
+    @yield('dadosEstruturados')
 
     <meta name="color-scheme" content="light only">
     <meta name="X-DarkMode-Default" value="false" />

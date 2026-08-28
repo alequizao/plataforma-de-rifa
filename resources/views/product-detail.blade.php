@@ -18,6 +18,31 @@
 
 
 
+@section('ogTitle', $productModel->name)
+@section('metaDescription', $productModel->name . ' — ' . $productModel->subname . '. Participe: escolha seus números e pague por PIX.')
+
+@section('dadosEstruturados')
+    <script type="application/ld+json">
+    {!! json_encode([
+        '@context' => 'https://schema.org',
+        '@type' => 'Product',
+        'name' => $productModel->name,
+        'description' => $productModel->subname,
+        'image' => $productModel->imagem() ? asset('products/' . $productModel->imagem()->name) : null,
+        'sku' => 'RIFA-' . $productModel->id,
+        'offers' => [
+            '@type' => 'Offer',
+            'price' => str_replace(',', '.', $productModel->price),
+            'priceCurrency' => 'BRL',
+            'availability' => $productModel->status == 'Ativo'
+                ? 'https://schema.org/InStock'
+                : 'https://schema.org/SoldOut',
+            'url' => url()->current(),
+        ],
+    ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+@endsection
+
 @section('content')
     <script>
         function infoParticipante(msg) {

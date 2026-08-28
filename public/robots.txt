@@ -1,2 +1,19 @@
 User-agent: *
-Disallow:
+Allow: /
+
+# áreas administrativas e de checkout não devem ser indexadas
+Disallow: /login
+Disallow: /home
+Disallow: /meus-sorteios
+Disallow: /clientes
+Disallow: /clientes-novo
+Disallow: /clientes-exportar
+Disallow: /aparencia
+Disallow: /versoes
+Disallow: /tutoriais
+Disallow: /wpp-mensagens
+Disallow: /perfil
+Disallow: /checkout
+Disallow: /minhas-reservas
+
+Sitemap: https://rifa.alequizao.com/sitemap.xml

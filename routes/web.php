@@ -161,6 +161,7 @@ Route::middleware(['check'])->group(function () {
 
     Route::get('/', 'ProductController@index')->name('inicio');
     Route::get('/sorteios', 'ProductController@sorteios')->name('sorteios');
+    Route::get('/sitemap.xml', 'ProductController@sitemap')->name('sitemap');
     Route::get('sorteio/{id}/{tokenAfiliado?}', 'ProductController@product')->name('product');
     Route::get('resumo-rifa/{id}', 'MySweepstakesController@resumoRifa')->name('resumoRifa');
     Route::get('resumo-rifa-pdf/{id}', 'MySweepstakesController@resumoPDF')->name('resumoRifaPDF');
