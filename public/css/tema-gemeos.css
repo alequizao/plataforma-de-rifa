@@ -1,0 +1,1979 @@
+/*!
+ * Plataforma de Rifa — tema visual
+ * Desenvolvido por @alequizao
+ * Instagram : https://instagram.com/alequizao
+ * WhatsApp  : +55 82 98871-7072
+ * E-mail    : alequizao.dev@gmail.com
+ */
+/* ============================================================
+   TEMA "GÊMEOS" — visual idêntico ao gemeosbrasil.me
+   Portado dos tokens --incrivel-* da plataforma IncrívelSorteios.
+   Carregado por ÚLTIMO no layout para sobrepor o CSS antigo.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* ---------- 1. TOKENS ---------- */
+:root {
+    color-scheme: light;
+
+    --incrivel-primaria: #00307a;
+    --incrivel-primariaColor: #d6d6d6;
+    --incrivel-primariaLink: #fff;
+    --incrivel-primariaLinkHover: #fff;
+
+    --incrivel-primariaDarken: #e4e4e4;   /* fundo da página */
+    --incrivel-bg: #f1f1f1;
+    --incrivel-border: #d1d1d1;
+    --incrivel-bgColor: #323232;
+    --incrivel-bgLink: #202020;
+    --incrivel-bgLinkHover: var(--incrivel-primaria);
+
+    --incrivel-cardBg: #fff;
+    --incrivel-cardColor: #171717;
+    --incrivel-cardLink: #000;
+
+    --incrivel-modalBg: #fff;
+    --incrivel-modalBorder: #eee;
+    --incrivel-modalColor: #333;
+
+    --incrivel-formBg: #fff;
+    --incrivel-formBgHover: #d9d9d9;
+    --incrivel-formBgHoverColor: #545454;
+    --incrivel-formBorder: #c9c9c9;
+    --incrivel-formColor: #5a5a5a;
+
+    --incrivel-tinta: #171717;
+    --incrivel-texto-forte: #14171f;
+    --incrivel-texto: #252831;
+    --incrivel-texto-suave: rgba(23, 23, 23, .70);
+    --incrivel-texto-fraco: rgba(23, 23, 23, .54);
+    --incrivel-borda-sutil: rgba(20, 23, 31, .09);
+    --incrivel-borda-media: rgba(20, 23, 31, .17);
+
+    --incrivel-cta-bg: #198754;
+    --incrivel-cta-color: #fff;
+    --incrivel-cta-brilho: rgba(25, 135, 84, .30);
+
+    --incrivel-raio: 10px;
+    --incrivel-raio-lg: 18px;
+    --incrivel-sombra-1: 0 1px 2px rgba(0, 0, 0, .07);
+    --incrivel-sombra-2: 0 4px 14px rgba(0, 0, 0, .10);
+
+    --bs-border-radius: var(--incrivel-raio);
+    --bs-link-color: var(--incrivel-bgLink);
+    --bs-link-hover-color: var(--incrivel-bgLinkHover);
+    accent-color: var(--incrivel-primaria);
+}
+
+/* Variante escura (quando $config->tema == 'dark') */
+body.tema-dark {
+    color-scheme: dark;
+    --incrivel-primariaDarken: #0d0f16;
+    --incrivel-bg: #14171f;
+    --incrivel-bgColor: #dfe3ec;
+    --incrivel-bgLink: #eef1f8;
+    --incrivel-cardBg: #1b1f2a;
+    --incrivel-cardColor: #eef1f8;
+    --incrivel-cardLink: #fff;
+    --incrivel-modalBg: #1b1f2a;
+    --incrivel-modalColor: #eef1f8;
+    --incrivel-modalBorder: rgba(255, 255, 255, .08);
+    --incrivel-formBg: #232837;
+    --incrivel-formColor: #dfe3ec;
+    --incrivel-formBorder: rgba(255, 255, 255, .17);
+    --incrivel-tinta: #eef1f8;
+    --incrivel-texto-forte: #fff;
+    --incrivel-texto: #dfe3ec;
+    --incrivel-texto-suave: rgba(238, 241, 248, .70);
+    --incrivel-texto-fraco: rgba(238, 241, 248, .54);
+    --incrivel-borda-sutil: rgba(255, 255, 255, .09);
+    --incrivel-borda-media: rgba(255, 255, 255, .17);
+}
+
+/* ---------- 2. BASE ---------- */
+html,
+body,
+body.tema-dark {
+    background: var(--incrivel-primariaDarken) !important;
+}
+
+body {
+    font-family: Montserrat, sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
+    text-rendering: optimizeLegibility !important;
+    color: var(--incrivel-bgColor);
+    scroll-behavior: smooth;
+    line-height: 1.2;
+    font-size: 16px;
+    height: auto !important;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+body a {
+    color: var(--incrivel-bgLink);
+    text-decoration: none;
+    transition: color .2s ease-in-out;
+}
+
+body a:hover,
+body a:focus,
+body a:active {
+    color: var(--incrivel-bgColor);
+    text-decoration: none;
+}
+
+.container-600 {
+    max-width: 600px;
+}
+
+.font-x    { font-size: .70em; }
+.font-xssss{ font-size: .62em; }
+.font-xsss { font-size: .70em; }
+.font-xss  { font-size: .82em; }
+.font-xs   { font-size: .90em; }
+.font-sm   { font-size: 1em; }
+.font-md   { font-size: 1.1em; }
+.font-mdd  { font-size: 1.2em; }
+.font-lgg  { font-size: 1.8em; }
+.font-weight-600 { font-weight: 600; }
+.rounded-10 { border-radius: 10px; }
+.text-yellow { color: #fdffa9; }
+.bg-cor-primaria { background-color: var(--incrivel-primaria) !important; }
+
+/* ---------- 3. HEADER (Header_appHeaderV2) ---------- */
+.app-header-gemeos {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    overflow: hidden;
+    transition: height .4s ease-in-out, background-color .6s ease-in;
+}
+
+.app-header-gemeos .app-header-container {
+    background-color: var(--incrivel-primaria);
+    color: var(--incrivel-primariaColor);
+    font-size: .9em;
+}
+
+.app-header-gemeos .app-header-wrap {
+    display: flex;
+    align-items: center;
+    height: 70px;
+}
+
+.app-header-gemeos .app-header-brand {
+    object-fit: contain;
+    height: 70px;
+    width: 150px;
+    max-height: 55px;
+    max-width: min(100%, 185px);
+}
+
+.app-header-gemeos .btn-link,
+.app-header-gemeos a {
+    color: var(--incrivel-primariaColor);
+    text-decoration: none;
+}
+
+.app-header-gemeos .btn-link:hover,
+.app-header-gemeos a:hover {
+    color: var(--incrivel-primariaLink);
+}
+
+.app-header-gemeos hr {
+    opacity: .1;
+    color: #fff;
+}
+
+.nav-horizontal-header {
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.nav-horizontal-header li { margin-right: 14px; }
+.nav-horizontal-header li:last-child { margin-right: 0; }
+
+.nav-horizontal-header a {
+    color: var(--incrivel-primariaColor) !important;
+    font-weight: 500;
+}
+
+.nav-horizontal-header a:hover,
+.nav-horizontal-header a.active {
+    color: var(--incrivel-primariaLink) !important;
+}
+
+.nav-horizontal-header a.active { font-weight: 600; }
+.nav-horizontal-header .icone { color: #fad601; }
+
+/* Faixa azul que o miolo arredondado "come" */
+.black-bar {
+    background-color: var(--incrivel-primaria);
+    border: 1px solid var(--incrivel-primaria);
+    height: 18px;
+    box-shadow: 0 20px 30px 0 rgba(0, 0, 0, .08);
+}
+
+/* ---------- 4. MIOLO ---------- */
+.app-main,
+#app-main {
+    background: var(--incrivel-primariaDarken) !important;
+    max-width: 600px;
+    margin-top: -18px !important;
+    margin-bottom: 0 !important;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-top: 1rem !important;
+    padding-bottom: 10px !important;
+    position: relative !important;
+    z-index: 1 !important;
+    min-height: 100vh;
+}
+
+.app-main a,
+.app-main a:hover { text-decoration: none; }
+
+/* neutraliza o card branco/preto interno herdado do tema antigo */
+.rifas,
+.rifas.dark,
+.rifa-dark {
+    background: transparent !important;
+    position: static !important;
+    border-radius: 0 !important;
+    min-height: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* container do miolo com gutter de 12px, igual ao Gêmeos */
+.app-main.container,
+#app-main.container { padding-left: 12px; padding-right: 12px; }
+
+.app-title {
+    display: flex;
+    align-items: self-end;
+    margin-bottom: 6px;
+    padding-bottom: 0;
+}
+
+.app-title h1,
+.app-title .h1 {
+    color: var(--incrivel-texto) !important;
+    padding-right: 5px;
+    padding-top: 0 !important;
+    font-weight: 600;
+    font-size: 1.1em;
+    margin: 0;
+}
+
+.app-title .app-title-desc {
+    color: var(--incrivel-texto-suave) !important;
+    padding-top: 6px;
+    font-size: .9em;
+}
+
+/* ---------- 5. CARD DESTAQUE (SorteioTpl destaque) ---------- */
+.card-rifa-destaque,
+.card-rifa-destaque.dark {
+    background-color: var(--incrivel-cardBg) !important;
+    color: var(--incrivel-cardColor);
+    box-shadow: 0 4px 3px rgba(0, 0, 0, .08);
+    border-radius: 10px !important;
+    padding: 0 0 8px !important;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-rifa-destaque .img-rifa-destaque {
+    position: relative;
+    width: 100%;
+    height: 290px;
+    overflow: hidden;
+}
+
+.card-rifa-destaque .img-rifa-destaque img {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    border-radius: 0 !important;
+}
+
+.card-rifa-destaque .infos-flutuante {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    z-index: 10;
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title-rifa-destaque {
+    padding: 4px 8px !important;
+    margin: 5px 0;
+    width: 100%;
+}
+
+.title-rifa-destaque h1,
+.title-rifa-destaque.dark h1 {
+    color: var(--incrivel-bgLink) !important;
+    -webkit-line-clamp: 2 !important;
+    margin-bottom: 1px;
+    font-weight: 500;
+    font-size: 1em;
+}
+
+.title-rifa-destaque p,
+.title-rifa-destaque.dark p {
+    color: var(--incrivel-texto-suave) !important;
+    font-size: .75em;
+    max-width: 96%;
+    margin: 0;
+}
+
+/* ---------- 6. CARD MINI (SorteioTplMini) ---------- */
+.card-rifa,
+.card-rifa.dark {
+    background-color: var(--incrivel-cardBg) !important;
+    color: var(--incrivel-cardColor);
+    border-radius: 10px;
+    font-size: .85em;
+    display: flex;
+    padding: 5px;
+    border: none;
+    margin-bottom: 10px;
+}
+
+.card-rifa .img-rifa img,
+.card-rifa img {
+    height: 90px;
+    width: 90px;
+    min-width: 90px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.card-rifa .title-rifa {
+    margin-left: 10px;
+    width: 100%;
+    min-width: 0;
+}
+
+.sorteio-codigo-operacao {
+    font-weight: 600;
+    font-size: .7em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, .06);
+    border: 1px solid rgba(0, 0, 0, .08);
+    color: var(--incrivel-texto-suave);
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: .2px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.sorteio-codigo-operacao::before {
+    content: "#";
+    margin-right: 4px;
+    opacity: .45;
+}
+
+.data-sorteio,
+.data-sorteio.dark {
+    color: var(--incrivel-texto-fraco) !important;
+    padding-right: 10px;
+    font-weight: 400;
+}
+
+/* ---------- 7. BOTÃO CTA VERDE ---------- */
+.btn-participar-sorteio {
+    background-color: var(--incrivel-cta-bg) !important;
+    color: var(--incrivel-cta-color) !important;
+    position: relative;
+    border-radius: 10px !important;
+    border: none !important;
+    box-shadow: 0 4px 15px var(--incrivel-cta-brilho) !important;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275) !important;
+    overflow: hidden;
+    padding: 5px 15px !important;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: btnPulseGlow 4s ease-in-out infinite;
+}
+
+.btn-participar-sorteio:hover,
+.btn-participar-sorteio:focus {
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--incrivel-cta-brilho) !important;
+    filter: brightness(1.1);
+}
+
+.btn-participar-sorteio:active {
+    transform: scale(.97) !important;
+    box-shadow: 0 2px 10px var(--incrivel-cta-brilho) !important;
+}
+
+.btn-participar-sorteio::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, .2);
+    transform: rotate(30deg);
+    animation: btnShimmer 5s infinite;
+}
+
+.btn-participar-sorteio:hover::after,
+.btn-participar-sorteio:focus::after { left: 120%; }
+
+.btn-participar-sorteio .btn-icon { font-size: 1.4rem; }
+
+.btn-participar-sorteio .btn-texto-principal {
+    display: block;
+    text-transform: uppercase;
+}
+
+.card-rifa .btn-participar-sorteio { min-height: 30px !important; }
+
+@keyframes btnShimmer {
+    0%   { left: -60%; }
+    12%  { left: 120%; }
+    100% { left: 120%; }
+}
+
+@keyframes btnPulseGlow {
+    0%, 100% { box-shadow: 0 4px 15px var(--incrivel-cta-brilho); }
+    50%      { box-shadow: 0 6px 22px var(--incrivel-cta-brilho); }
+}
+
+.blink { animation: animate 1.5s linear infinite; }
+
+@keyframes animate {
+    0%   { opacity: 0; }
+    50%  { opacity: .7; }
+    100% { opacity: 0; }
+}
+
+/* ---------- 8. GANHADORES ---------- */
+.ganhador,
+.ganhador.dark {
+    display: flex !important;
+    align-items: center;
+    gap: .6rem;
+    margin-bottom: .5rem;
+    background: var(--incrivel-cardBg) !important;
+    color: var(--incrivel-cardColor);
+    border: 1px solid var(--incrivel-borda-sutil);
+    padding: .6rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.ganhador-foto img {
+    width: 56px !important;
+    height: 56px !important;
+    flex: 0 0 56px;
+    border-radius: 8px !important;
+    border: 2px solid var(--incrivel-cta-bg);
+    object-fit: cover;
+    margin-top: 0 !important;
+}
+
+.ganhador-desc,
+.ganhador-desc.dark {
+    min-width: 0;
+    margin-left: 0;
+    color: var(--incrivel-cardColor) !important;
+}
+
+.ganhador-desc h3 {
+    font-size: .9em;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--incrivel-texto-forte);
+}
+
+.ganhador p {
+    font-size: .8rem;
+    line-height: 1.25;
+    margin-bottom: 0;
+    color: var(--incrivel-texto-suave);
+}
+
+.ganhador-rifa { margin-left: auto; }
+
+.ganhador-rifa img {
+    height: 44px;
+    width: 44px;
+    border-radius: 50rem;
+    object-fit: cover;
+    margin-top: 0;
+}
+
+/* ---------- 9. "DÚVIDAS" / SUPORTE ---------- */
+.duvida {
+    background-color: var(--incrivel-cardBg) !important;
+    border: 1px solid var(--incrivel-borda-sutil);
+    border-radius: 10px;
+    height: 60px;
+    align-items: center;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.icone-duvidas {
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 48, 122, .10);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.text-duvidas h6 { color: var(--incrivel-texto-forte); }
+.text-duvidas p  { color: var(--incrivel-texto-suave) !important; }
+
+/* ---------- 10. CARDS / MODAIS / FORMS BOOTSTRAP ---------- */
+.card,
+.accordion .card,
+.app-card {
+    background-color: var(--incrivel-cardBg) !important;
+    color: var(--incrivel-cardColor) !important;
+    border: 1px solid var(--incrivel-borda-sutil) !important;
+    border-radius: 10px !important;
+}
+
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--incrivel-borda-sutil) !important;
+}
+
+.accordion .card .btn {
+    color: var(--incrivel-texto-forte);
+    font-weight: 600;
+    width: 100%;
+    text-align: left;
+}
+
+.modal-content {
+    background-color: var(--incrivel-modalBg);
+    color: var(--incrivel-modalColor);
+    border: 1px solid var(--incrivel-modalBorder);
+    border-radius: var(--incrivel-raio-lg);
+}
+
+.modal-fullscreen .modal-content { border-radius: 0; }
+
+.form-control,
+.form-select {
+    background-color: var(--incrivel-formBg);
+    border: 1px solid var(--incrivel-formBorder);
+    color: var(--incrivel-formColor);
+    border-radius: var(--incrivel-raio);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--incrivel-primaria);
+    box-shadow: 0 0 0 3px rgba(0, 48, 122, .25);
+    color: var(--incrivel-texto-forte);
+}
+
+.btn-primary {
+    background-color: var(--incrivel-primaria) !important;
+    border-color: var(--incrivel-primaria) !important;
+    color: #fff !important;
+    border-radius: var(--incrivel-raio) !important;
+}
+
+.btn-success {
+    background-color: var(--incrivel-cta-bg) !important;
+    border-color: var(--incrivel-cta-bg) !important;
+    border-radius: var(--incrivel-raio) !important;
+}
+
+/* ---------- 11. MENU MOBILE V2 ---------- */
+.mobile-menu-v2 .modal-content {
+    background: var(--incrivel-primaria) !important;
+    color: #fff;
+}
+
+.mobile-menu-v2 .modal-header {
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
+    padding: .75rem 1rem;
+}
+
+.mobile-menu-v2 .modal-body {
+    background: var(--incrivel-primaria) !important;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+}
+
+.mobile-menu-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.mobile-menu-topbar .app-brand {
+    max-width: 140px;
+    max-height: 35px;
+    width: auto;
+    height: auto;
+    display: block;
+}
+
+.mobile-menu-close {
+    background: rgba(255, 255, 255, .12);
+    border: none;
+    color: #fff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50rem;
+    font-size: 1rem;
+}
+
+.mobile-menu-shell { padding: 1rem; }
+
+.mobile-menu-guest-card {
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .12);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.mobile-menu-guest-title {
+    color: #fff;
+    font-weight: 600;
+    font-size: .95rem;
+    margin-bottom: .25rem;
+}
+
+.mobile-menu-guest-desc {
+    color: rgba(255, 255, 255, .7);
+    font-size: .8rem;
+    margin-bottom: .75rem;
+}
+
+.mobile-menu-guest-actions { display: flex; gap: .5rem; }
+
+.mobile-menu-btn-light,
+.mobile-menu-btn-outline {
+    flex: 1;
+    border-radius: 8px;
+    padding: .5rem;
+    font-size: .8rem;
+    font-weight: 600;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+}
+
+.mobile-menu-btn-light {
+    background: #fff;
+    color: var(--incrivel-primaria) !important;
+    border: none;
+}
+
+.mobile-menu-btn-outline {
+    background: transparent;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, .4);
+}
+
+.mobile-menu-primary-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    background: var(--incrivel-cta-bg);
+    color: #fff !important;
+    border-radius: 10px;
+    padding: .85rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 15px var(--incrivel-cta-brilho);
+}
+
+.mobile-menu-section { margin-bottom: 1.25rem; }
+
+.mobile-menu-section-title,
+.mobile-menu-legal-title {
+    color: rgba(255, 255, 255, .5);
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    font-weight: 600;
+    margin-bottom: .5rem;
+}
+
+.mobile-menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-menu-link {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    color: #fff !important;
+    padding: .7rem .25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .07);
+    font-size: .9rem;
+}
+
+.mobile-menu-icon { opacity: .7; width: 20px; }
+
+.mobile-menu-legal { padding-bottom: 2rem; }
+
+.mobile-menu-legal-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-menu-legal-links a {
+    color: rgba(255, 255, 255, .6) !important;
+    font-size: .75rem;
+}
+
+/* menu antigo (nav-vertical) herdando as cores novas */
+.nav-vertical ul { list-style: none; padding-left: 0; }
+
+.nav-vertical ul li a {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    color: #fff !important;
+    padding: .7rem .25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, .07);
+}
+
+.nav-vertical ul li a .icone { opacity: .7; width: 20px; }
+
+/* ---------- 12. RODAPÉ ---------- */
+.app-footer,
+footer.app-footer {
+    background: var(--incrivel-primariaDarken);
+    color: var(--incrivel-texto-suave);
+    font-size: .8em;
+}
+
+/* ---------- 13. AJUSTES MOBILE ---------- */
+@media screen and (max-width: 768px) {
+    .app-main,
+    #app-main {
+        position: relative !important;
+        margin-top: -18px !important;
+        z-index: 1 !important;
+    }
+}
+
+/* ============================================================
+   14. SORTEIO MINI (SorteioTplMini) — idêntico ao Gêmeos
+   ============================================================ */
+.sorteio-mini {
+    background-color: var(--incrivel-cardBg);
+    color: var(--incrivel-cardColor);
+    border-radius: 10px;
+    font-size: .85em;
+    display: flex;
+    padding: 5px;
+    border: none;
+    margin-bottom: .5rem;
+}
+
+.min-w-0 { min-width: 0; }
+
+.sorteio-mini-imagem {
+    border-radius: 15px;
+    position: relative;
+    margin-right: 10px;
+    height: 90px;
+    width: 90px;
+    min-width: 90px;
+    overflow: hidden;
+}
+
+.sorteio-mini-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.sorteio-mini-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
+    gap: 6px;
+}
+
+.sorteio-mini-status .badge {
+    font-size: .65em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    line-height: 1;
+    opacity: .95;
+    margin-top: 0 !important;
+}
+
+.sorteio-mini-title {
+    color: var(--incrivel-bgLink);
+    margin-bottom: 1px;
+    font-weight: 500;
+    font-size: 1em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sorteio-mini-title a { color: inherit; }
+
+.sorteio-mini-descricao {
+    color: var(--incrivel-texto-suave);
+    font-size: .75em;
+    max-width: 96%;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sorteio-mini-sutis {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    row-gap: 4px;
+    flex-wrap: wrap;
+    font-size: .7em;
+    color: var(--incrivel-texto-suave);
+}
+
+.sorteio-mini-sutis .dt-sorteio-mini { opacity: .75; }
+.sorteio-mini-sutis .dt-sorteio-mini i { margin-right: 4px; opacity: .55; }
+
+/* ---- Vendas express (quick add + stepper + comprar) ---- */
+.vendas-express-geral { gap: 0; }
+
+.ve-quick {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 35px;
+    margin-right: 4px;
+    border-radius: .375rem;
+    color: #fff;
+    font-size: .9em;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+}
+
+.bg-gradient-green3 { background: linear-gradient(135deg, #0f5132, #198754); }
+.bg-gradient-green2 { background: linear-gradient(135deg, #198754, #20c997); }
+
+.ve-quick:active { transform: scale(.95); }
+
+.vendasExpressNums .form-control {
+    background: var(--incrivel-formBg);
+    border: 1px solid var(--incrivel-formBorder);
+    border-radius: 8px;
+    height: 35px;
+    font-weight: 600;
+    color: var(--incrivel-texto-forte);
+}
+
+.vendasExpressNums .left,
+.vendasExpressNums .right { font-size: 1.5rem; line-height: 1; cursor: pointer; }
+.vendasExpressNums .left  { padding-right: 6px; }
+.vendasExpressNums .right { padding-left: 6px; }
+.vendasExpressNums .center { flex: 1 1 auto; }
+.text-cor-primaria { color: var(--incrivel-primaria); }
+.pointer { cursor: pointer; }
+
+.sorteio-mini .btn-participar-sorteio {
+    min-height: 38px !important;
+    padding: .5rem !important;
+    animation: none;
+}
+
+.sorteio-mini .btn-participar-sorteio .preco { font-weight: 700; }
+
+/* ============================================================
+   15. GANHADORES — carrossel horizontal
+   ============================================================ */
+.winners-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+}
+
+.winners-scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: .5rem;
+    padding-bottom: .5rem;
+}
+
+.winners-scroller::-webkit-scrollbar { height: 0; }
+
+.winners-card {
+    position: relative;
+    min-width: 285px;
+    max-width: 285px;
+    height: 87px;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .6rem;
+    padding: .6rem;
+    border: 1px solid rgba(0, 0, 0, .05);
+    background: var(--incrivel-cardBg);
+    color: var(--incrivel-cardColor) !important;
+    border-radius: 10px;
+}
+
+.winners-media {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    flex: 0 0 64px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f6f7f8;
+}
+
+.winners-media img { width: 100%; height: 100%; object-fit: cover; }
+
+.winners-content {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.winners-nome {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: .9em;
+    font-weight: 600;
+    color: var(--incrivel-texto-forte);
+}
+
+.winners-premio {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: .8rem;
+    line-height: 1.25;
+    color: var(--incrivel-texto-suave);
+}
+
+.winners-meta {
+    font-size: .72rem;
+    color: var(--incrivel-texto-fraco);
+    display: flex;
+    gap: .5rem;
+    margin-top: 2px;
+}
+
+/* ============================================================
+   16. TELA DE CAMPANHA — padrão Gêmeos
+   ============================================================ */
+body.pagina-campanha .app-header-gemeos {
+    position: absolute;
+    background: transparent;
+}
+
+body.pagina-campanha .app-header-gemeos .app-header-container {
+    background: linear-gradient(180deg, rgba(0, 0, 0, .55) 0%, rgba(0, 0, 0, 0) 100%) !important;
+}
+
+body.pagina-campanha .black-bar { display: none; }
+
+body.pagina-campanha .detail,
+body.pagina-campanha .container.detail {
+    max-width: 600px;
+    padding: 0;
+    margin-top: 0 !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+body.pagina-campanha .rifa-content {
+    background: transparent !important;
+    padding: 0;
+}
+
+body.pagina-campanha .detail > .row { margin: 0; }
+
+/* --- HERO --- */
+.campanha-hero { position: relative; }
+
+.campanha-hero .carousel-inner { margin-top: 0 !important; }
+.campanha-hero .carousel-item { margin-top: 0 !important; }
+
+.campanha-hero-img {
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 0 !important;
+}
+
+.campanha-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0, 0, 0, .45) 0%, rgba(0, 0, 0, 0) 35%,
+            rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, .88) 100%);
+    z-index: 2;
+}
+
+.campanha-hero-info {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    padding: 0 12px 10px;
+}
+
+.campanha-hero-badges {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.campanha-hero-badges .badge {
+    margin-top: 0 !important;
+    border-radius: 999px;
+    font-size: .7rem;
+    padding: 4px 10px;
+}
+
+.campanha-hero-badges .sorteio-codigo-operacao {
+    background: rgba(0, 0, 0, .45);
+    border-color: rgba(255, 255, 255, .18);
+    color: #fff;
+    font-size: .68rem;
+}
+
+.campanha-hero-title {
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 2px;
+    line-height: 1.15;
+}
+
+.campanha-hero-desc {
+    color: rgba(255, 255, 255, .7);
+    font-size: .8rem;
+    margin: 0;
+}
+
+/* --- BARRA MEUS TÍTULOS --- */
+.campanha-barra-titulos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    background: #202020;
+    color: #fff !important;
+    font-weight: 600;
+    font-size: .95rem;
+    padding: .7rem;
+    width: 100%;
+}
+
+.campanha-barra-titulos:hover { color: #fff !important; }
+
+/* --- PREÇO --- */
+.campanha-preco {
+    padding: 1rem 12px .25rem;
+}
+
+.campanha-preco-label {
+    color: var(--incrivel-texto-suave);
+    font-size: .95rem;
+    margin-right: .35rem;
+}
+
+.campanha-preco-valor {
+    background: var(--incrivel-primaria);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: .4rem .8rem;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+.campanha-data {
+    color: var(--incrivel-texto-fraco);
+    font-size: .78rem;
+    padding-bottom: .25rem;
+}
+
+/* --- ÁREA DE COMPRA --- */
+.campanha-compra { padding: .75rem 12px 2rem; }
+
+.campanha-stepper {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    background: var(--incrivel-cardBg);
+    border: 1px solid var(--incrivel-borda-sutil);
+    border-radius: 12px;
+    padding: .5rem .75rem;
+    margin-bottom: .6rem;
+}
+
+.stepper-limpar,
+.stepper-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: .35rem .5rem;
+    color: var(--incrivel-texto-suave);
+}
+
+.stepper-limpar { color: #dc3545; }
+.stepper-mais { color: var(--incrivel-primaria); }
+
+.stepper-input {
+    flex: 1 1 auto;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    text-align: center;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--incrivel-texto-forte);
+    -moz-appearance: textfield;
+}
+
+.stepper-input::-webkit-outer-spin-button,
+.stepper-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.stepper-input:focus { outline: none; }
+
+/* --- GRADE DE SELEÇÃO --- */
+.campanha-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: .5rem;
+    margin-bottom: .75rem;
+}
+
+.campanha-grid-item {
+    position: relative;
+    background: var(--incrivel-primaria);
+    color: #fff;
+    border-radius: 10px;
+    padding: .7rem .25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform .15s ease, filter .15s ease;
+}
+
+.campanha-grid-item:active { transform: scale(.96); }
+.campanha-grid-item:hover { filter: brightness(1.12); }
+
+.campanha-grid-item.is-popular { background: var(--incrivel-cta-bg); }
+
+.campanha-grid-badge {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #0f5132;
+    color: #fff;
+    font-size: .55rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.campanha-grid-qtd {
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.campanha-grid-label {
+    font-size: .68rem;
+    opacity: .85;
+}
+
+/* --- CTA --- */
+.campanha-cta {
+    margin-bottom: .75rem;
+    padding: .6rem 1rem !important;
+}
+
+.campanha-cta-preco { white-space: nowrap; }
+
+/* --- BOTÃO BRANCO / DESCRIÇÃO --- */
+.campanha-btn-branco {
+    width: 100%;
+    background: var(--incrivel-cardBg);
+    color: var(--incrivel-texto-forte);
+    border: 1px solid var(--incrivel-borda-sutil);
+    border-radius: 10px;
+    padding: .8rem;
+    font-weight: 600;
+    font-size: .95rem;
+    margin-bottom: .75rem;
+}
+
+.campanha-descricao {
+    background: var(--incrivel-cardBg);
+    border: 1px solid var(--incrivel-borda-sutil);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: .75rem;
+    font-size: .85rem;
+    color: var(--incrivel-texto);
+    max-height: 320px;
+    overflow-y: auto;
+}
+
+/* --- AVISO 18+ --- */
+.campanha-aviso18 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    color: var(--incrivel-texto-fraco);
+    font-size: .8rem;
+    padding: .5rem 0 1rem;
+}
+
+.badge-18 {
+    background: var(--incrivel-primaria);
+    color: #fff;
+    border-radius: 999px;
+    font-size: .65rem;
+    font-weight: 700;
+    padding: 3px 8px;
+}
+
+/* --- COMPARTILHAR --- */
+.campanha-share {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+}
+
+.share-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50rem;
+    color: #fff !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+/* --- correções da tela de campanha sobre o CSS antigo --- */
+body.pagina-campanha .nav-principal-horizontal { display: none; }
+body.pagina-campanha .app-header-gemeos { height: 70px; }
+
+body.pagina-campanha,
+body.pagina-campanha .rifa-content,
+body.pagina-campanha .rifa-content.dark,
+body.pagina-campanha .detail {
+    background: var(--incrivel-primariaDarken) !important;
+}
+
+/* blocos legados (promoção, cotas, ranking) no padrão claro */
+body.pagina-campanha .body-promo,
+body.pagina-campanha .body-ranking,
+body.pagina-campanha .body-cotas,
+body.pagina-campanha .body-promo.dark,
+body.pagina-campanha .body-ranking.dark {
+    background-color: var(--incrivel-cardBg) !important;
+    border: 1px solid var(--incrivel-borda-sutil);
+    border-radius: 10px;
+}
+
+body.pagina-campanha .title-promo,
+body.pagina-campanha .title-ranking h5,
+body.pagina-campanha .title-ranking span,
+body.pagina-campanha .title-promo.dark,
+body.pagina-campanha .app-title h1 {
+    color: var(--incrivel-texto-forte) !important;
+}
+
+body.pagina-campanha .rifa-content > *:not(.campanha-hero):not(.campanha-barra-titulos):not(.campanha-corpo) {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+body.pagina-campanha .campanha-compra { padding-left: 0; padding-right: 0; }
+
+/* ============================================================
+   17. PÁGINA DE GANHADORES
+   ============================================================ */
+.ganhador-card {
+    display: flex;
+    gap: .75rem;
+    background: var(--incrivel-cardBg);
+    border-radius: 10px;
+    padding: .6rem;
+    margin-bottom: .6rem;
+    box-shadow: 0 4px 3px rgba(0, 0, 0, .06);
+}
+
+.ganhador-card-foto {
+    flex: 0 0 90px;
+    width: 90px;
+    height: 90px;
+    border: 1px solid #198754;
+    border-radius: 12px;
+    overflow: hidden;
+    display: block;
+}
+
+.ganhador-card-foto img { width: 100%; height: 100%; object-fit: cover; }
+
+.ganhador-card-info { min-width: 0; }
+
+.ganhador-card-nome {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--incrivel-texto-forte);
+    line-height: 1.2;
+}
+
+.ganhador-card-premio {
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--incrivel-texto);
+    margin-bottom: 2px;
+}
+
+.ganhador-card-linha {
+    font-size: .82rem;
+    color: var(--incrivel-texto-suave);
+}
+
+.ganhador-card-linha b { color: var(--incrivel-texto-forte); }
+
+/* --- abas Ativos / Concluídos --- */
+.campanha-abas {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: .75rem;
+}
+
+.campanha-aba {
+    flex: 1;
+    text-align: center;
+    padding: .6rem;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--incrivel-cardBg);
+    color: var(--incrivel-texto-suave);
+    border: 1px solid var(--incrivel-borda-sutil);
+    transition: background .2s, color .2s;
+}
+
+.campanha-aba.is-ativa {
+    background: var(--incrivel-primaria);
+    color: #fff;
+    border-color: var(--incrivel-primaria);
+}
+
+/* ============================================================
+   18. PÁGINAS DE TEXTO / LOGIN / CHECKOUT
+   ============================================================ */
+.app-main .politica,
+.app-main .termos,
+.app-main .regulamento {
+    background: var(--incrivel-cardBg);
+    border-radius: 10px;
+    padding: 1rem;
+    color: var(--incrivel-texto);
+    text-align: left;
+}
+
+/* login */
+form[action*="login"],
+.login-card {
+    background: var(--incrivel-cardBg);
+    border-radius: var(--incrivel-raio-lg);
+    padding: 1.25rem;
+    box-shadow: var(--incrivel-sombra-2);
+    max-width: 420px;
+    margin: 1rem auto;
+}
+
+form[action*="login"] label { font-weight: 600; font-size: .85rem; }
+
+form[action*="login"] .btn,
+form[action*="login"] button[type="submit"] {
+    width: 100%;
+    border-radius: var(--incrivel-raio) !important;
+    padding: .7rem;
+    font-weight: 600;
+}
+
+/* checkout / minhas reservas herdando o padrão claro */
+.checkout,
+.checkout .card,
+.resumo-compra,
+.minhas-reservas {
+    background: var(--incrivel-cardBg) !important;
+    color: var(--incrivel-cardColor) !important;
+    border-radius: 10px;
+}
+
+.table {
+    --bs-table-bg: var(--incrivel-cardBg);
+    --bs-table-color: var(--incrivel-cardColor);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* ============================================================
+   19. RESPONSIVIDADE E FLUIDEZ (igual ao Gêmeos)
+   ============================================================ */
+* { -webkit-tap-highlight-color: transparent; }
+
+img { max-width: 100%; }
+
+.app-main,
+.container,
+.container-600 { width: 100%; }
+
+@media (min-width: 601px) {
+    .app-main,
+    #app-main,
+    .container-600,
+    body.pagina-campanha .detail {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 360px) {
+    body { font-size: 15px; }
+    .campanha-grid { grid-template-columns: repeat(2, 1fr); }
+    .ve-quick { width: 34px; }
+}
+
+/* transições suaves como no original */
+.sorteio-mini,
+.card-rifa-destaque,
+.ganhador-card,
+.winners-card,
+.campanha-grid-item {
+    transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.sorteio-mini:hover,
+.ganhador-card:hover,
+.winners-card:hover { box-shadow: var(--incrivel-sombra-2); }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .001ms !important;
+        transition-duration: .001ms !important;
+    }
+}
+
+/* ============================================================
+   20. FIX DE RESPONSIVIDADE — #app-main > .row
+   O miolo é uma coluna única de 600px em qualquer largura (igual
+   ao Gêmeos). Sem isto, o col-md-6 herdado encolhia o conteúdo
+   para 300px a partir de 768px.
+   ============================================================ */
+#app-main > .row,
+.app-main > .row,
+body.pagina-campanha .detail > .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: auto !important;
+}
+
+#app-main > .row > [class*="col"],
+.app-main > .row > [class*="col"],
+body.pagina-campanha .detail > .row > [class*="col"] {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* mantém os cards fluidos dentro da coluna */
+#app-main .sorteio-mini,
+#app-main .card-rifa-destaque,
+#app-main .ganhador-card,
+#app-main .duvida {
+    width: 100%;
+}
+
+/* a faixa azul e o hero acompanham a largura do miolo */
+@media (min-width: 601px) {
+    .black-bar { max-width: 100%; }
+}
+
+/* ============================================================
+   21. TELAS ULTRA ESTREITAS (Galaxy Fold fechado, 280px)
+   ============================================================ */
+.winners-card {
+    min-width: min(285px, calc(100vw - 40px));
+    max-width: min(285px, calc(100vw - 40px));
+}
+
+@media (max-width: 400px) {
+    .vendas-express-geral { flex-wrap: wrap; row-gap: .35rem; }
+    .vendas-express-numeros-container { flex: 0 0 auto; }
+    .vendasExpressNums { flex: 1 1 120px; min-width: 120px; }
+}
+
+@media (max-width: 340px) {
+    .sorteio-mini-imagem {
+        height: 74px;
+        width: 74px;
+        min-width: 74px;
+        margin-right: 8px;
+    }
+
+    .vendas-express-geral { flex-direction: column; align-items: stretch; }
+    .vendas-express-numeros-container { justify-content: space-between; }
+    .ve-quick { flex: 1; width: auto; margin-right: 4px; }
+    .ve-quick:last-child { margin-right: 0; }
+
+    .campanha-grid { grid-template-columns: repeat(2, 1fr); }
+    .campanha-grid-qtd { font-size: 1rem; }
+
+    .campanha-cta,
+    .btn-participar-sorteio { padding: .5rem .6rem !important; }
+
+    .campanha-cta .btn-texto-principal { font-size: .85rem; }
+    .campanha-cta-preco { font-size: .75rem; }
+
+    .ganhador-card-foto { flex: 0 0 70px; width: 70px; height: 70px; }
+    .ganhador-card-nome { font-size: 1rem; }
+}
+
+/* grades de números/cotas nunca estouram a tela */
+.seletor-item,
+.num,
+.numero,
+.cota {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.seletor,
+.numeros,
+.cotas,
+.grid-numeros {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+/* seletores de cota (manual/fazendinha) em telas estreitas */
+.seletor-item {
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.seletor-item > .d-flex,
+.seletor-item .txt { min-width: 0; }
+
+@media (max-width: 400px) {
+    .seletor-item { font-size: .78em; }
+    .seletor-item .num { padding: .35rem .45rem !important; }
+}
+
+@media (max-width: 340px) {
+    .d-flex.justify-content-between:has(> .seletor-item) {
+        flex-wrap: wrap;
+        gap: .35rem;
+        justify-content: flex-start !important;
+    }
+
+    .seletor-item { flex: 1 1 calc(50% - .35rem); }
+}
+
+/* ============================================================
+   22. CAMPANHA — alinhamento e espaçamento do corpo
+   Um único wrapper com gutter de 12px; tudo lá dentro fica
+   alinhado com o hero. Containers legados param de duplicar
+   padding e de aplicar margens negativas.
+   ============================================================ */
+body.pagina-campanha .rifa-content > .campanha-corpo {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+}
+
+.campanha-corpo {
+    padding: 0 12px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* containers do Bootstrap dentro do corpo não recriam gutter */
+.campanha-corpo .container,
+.campanha-corpo .container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100%;
+    width: 100%;
+}
+
+.campanha-corpo .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+.campanha-corpo .row > [class*="col"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* margens negativas herdadas quebravam o alinhamento vertical */
+.campanha-corpo .card,
+.campanha-corpo > div[style*="margin-top: -"] {
+    margin-top: 0 !important;
+}
+
+/* ritmo vertical consistente entre blocos */
+.campanha-corpo > *,
+.campanha-corpo .card,
+.campanha-corpo .body-promo,
+.campanha-corpo .body-ranking,
+.campanha-corpo .body-compra-auto {
+    margin-bottom: .75rem;
+}
+
+.campanha-corpo .campanha-compra { padding: .75rem 0 1rem; }
+
+.campanha-corpo .card {
+    background: var(--incrivel-cardBg);
+    border: 1px solid var(--incrivel-borda-sutil);
+    border-radius: 10px;
+    margin-bottom: .75rem;
+}
+
+.campanha-corpo .card-body { padding: .85rem; }
+
+/* títulos dos blocos legados no padrão do tema */
+.campanha-corpo h5,
+.campanha-corpo .title-promo,
+.campanha-corpo .title-ranking h5 {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--incrivel-texto-forte) !important;
+    margin-bottom: .25rem;
+}
+
+.campanha-corpo .title-compra-auto span,
+.campanha-corpo .title-ranking span {
+    font-size: .9em;
+    color: var(--incrivel-texto-suave) !important;
+}
+
+/* grade de números não estoura nem cria scroll lateral */
+.campanha-corpo .container.text-center { overflow-x: hidden; }
+
+/* ============================================================
+   23. GRADE DE COTAS/NÚMEROS — padrão claro do tema
+   ============================================================ */
+.raffles {
+    background: var(--incrivel-cardBg);
+    border: 1px solid var(--incrivel-borda-sutil);
+    border-radius: 10px;
+    padding: .5rem .35rem;
+    margin-bottom: .75rem;
+}
+
+.number,
+.number-selected {
+    width: calc(16.666% - 6px) !important;
+    min-width: 52px;
+    margin: 3px !important;
+    padding: .5rem .25rem !important;
+    border-radius: 8px;
+    font-size: .78rem;
+    font-weight: 600 !important;
+    font-family: Montserrat, sans-serif !important;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    transition: transform .12s ease, background .15s ease;
+}
+
+.number:active { transform: scale(.94); }
+
+/* disponível */
+.number.disponivel {
+    background: var(--incrivel-formBg) !important;
+    color: var(--incrivel-texto-suave) !important;
+    border: 1px solid var(--incrivel-borda-media);
+}
+
+.number.disponivel:hover {
+    background: var(--incrivel-primaria) !important;
+    color: #fff !important;
+    border-color: var(--incrivel-primaria);
+}
+
+/* reservado */
+.number.reservado {
+    background: #ffc107 !important;
+    color: #3b2f00 !important;
+    border: 1px solid #ffc107;
+}
+
+/* pago / vendido */
+.number.pago {
+    background: var(--incrivel-cta-bg) !important;
+    color: #fff !important;
+    border: 1px solid var(--incrivel-cta-bg);
+    opacity: .85;
+}
+
+/* selecionado pelo usuário */
+.number.selected,
+.number.active,
+.number-selected {
+    background: var(--incrivel-primaria) !important;
+    color: #fff !important;
+    border: 1px solid var(--incrivel-primaria);
+}
+
+/* legenda (seletor-item) no padrão claro */
+.seletor-item {
+    background: var(--incrivel-cardBg);
+    border: 1px solid var(--incrivel-borda-sutil);
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+
+.seletor-item .num.bg-cota { background: var(--incrivel-borda-forte) !important; }
+
+@media (max-width: 400px) {
+    .number,
+    .number-selected {
+        width: calc(20% - 6px) !important;
+        min-width: 46px;
+        font-size: .72rem;
+    }
+}
+
+@media (min-width: 601px) {
+    .number,
+    .number-selected { width: calc(12.5% - 6px) !important; }
+}
+
+/* ============================================================
+   24. BOTÕES FLUTUANTES (WhatsApp/Instagram)
+   Estavam com z-index 99999 e cobriam os cards. Viram um FAB
+   empilhado no canto, abaixo de modais, e o miolo ganha folga
+   no rodapé para nada ficar escondido atrás deles.
+   ============================================================ */
+.botao-flutuante,
+.botao-flutuante-insta {
+    position: fixed;
+    right: 12px;
+    z-index: 1030 !important;          /* abaixo de modais (1055) e do header */
+    width: auto !important;
+    height: auto !important;
+    min-width: 44px;
+    padding: .5rem .75rem;
+    border-radius: 50rem !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    font-size: .78rem;
+    font-weight: 600;
+    line-height: 1;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .28) !important;
+    opacity: .96;
+    transition: transform .15s ease, opacity .15s ease;
+}
+
+.botao-flutuante { bottom: 16px !important; }
+.botao-flutuante-insta { bottom: 64px !important; }
+
+.botao-flutuante i,
+.botao-flutuante-insta i {
+    margin-top: 0 !important;
+    font-size: 1.05rem;
+}
+
+.botao-flutuante:hover,
+.botao-flutuante-insta:hover { transform: translateY(-2px); opacity: 1; }
+
+/* folga no rodapé para o FAB não tapar o último card */
+.app-main,
+#app-main,
+.campanha-corpo { padding-bottom: 96px !important; }
+
+/* modais e menu sempre acima do FAB */
+.modal, .modal-backdrop, .mobile-menu-v2 { z-index: 1055; }
+.swal2-container { z-index: 1060 !important; }
+
+/* ============================================================
+   25. RODAPÉ — assinatura do desenvolvedor
+   ============================================================ */
+.app-footer-dev {
+    text-align: center;
+    padding: 1.25rem 1rem 1.5rem;
+    color: var(--incrivel-texto-fraco);
+    font-size: .78rem;
+}
+
+.app-footer-dev .dev-marca a {
+    color: var(--incrivel-texto-suave) !important;
+    font-weight: 600;
+}
+
+.app-footer-dev .dev-marca a:hover { color: var(--incrivel-primaria) !important; }
+
+.app-footer-dev .dev-contatos {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: .6rem;
+}
+
+.app-footer-dev .dev-contatos a {
+    width: 32px;
+    height: 32px;
+    border-radius: 50rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--incrivel-cardBg);
+    border: 1px solid var(--incrivel-borda-sutil);
+    color: var(--incrivel-texto-suave) !important;
+    font-size: .9rem;
+    transition: all .18s ease;
+}
+
+.app-footer-dev .dev-contatos a:hover {
+    background: var(--incrivel-primaria);
+    border-color: var(--incrivel-primaria);
+    color: #fff !important;
+    transform: translateY(-2px);
+}
+
+/* assinatura na gaveta do painel */
+.assinatura-dev {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, .45) !important;
+    text-decoration: none;
+}
+
+.assinatura-dev:hover { color: #fff !important; }
+
+/* ============================================================
+   26. CAMPANHA — blocos legados sem sobreposição
+   Os cards de promoção e da barra de progresso vinham com
+   margens negativas inline (margin-top:-15px / -10px !important
+   e margin-bottom:-20px) e escalavam por cima dos vizinhos.
+   As margens saíram do HTML; aqui fica o ritmo vertical único.
+   ============================================================ */
+.campanha-corpo .bloco-promo,
+.campanha-corpo .bloco-progresso {
+    margin: 0 0 .75rem !important;
+    background-color: transparent !important;
+    border: 0 !important;
+}
+
+.campanha-corpo .bloco-promo .card-body,
+.campanha-corpo .bloco-progresso .card-body {
+    padding: .85rem;
+}
+
+/* rede de segurança: nada dentro do corpo da campanha puxa
+   os vizinhos com margem negativa */
+.campanha-corpo > *,
+.campanha-corpo .card,
+.campanha-corpo .container {
+    margin-top: 0 !important;
+}
+
+.campanha-corpo .progress-sell { width: 100%; }
+
+.campanha-corpo .progress {
+    height: 22px;
+    border-radius: 999px;
+    background: var(--incrivel-borda-sutil);
+    overflow: hidden;
+}
+
+.campanha-corpo .progress-bar {
+    font-size: .72rem;
+    font-weight: 700;
+    line-height: 22px;
+}
+
+/* títulos dos blocos legados alinhados com o resto */
+.campanha-corpo h5.title-promo,
+.campanha-corpo .title-ranking h5 {
+    margin: .25rem 0 .5rem !important;
+}

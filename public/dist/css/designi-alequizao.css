@@ -1,0 +1,358 @@
+/* =====================================================================
+   Designi Alequizao — camada visual do painel administrativo
+   Aplicada por cima do AdminLTE. Todas as cores em variaveis CSS.
+   ===================================================================== */
+
+:root {
+    --cor-primaria:  #2563EB;
+    --cor-primaria-d:#1d4ed8;
+    --cor-fundo:     #F5F5F5;
+    --cor-card:      #FFFFFF;
+    --cor-texto:     #333333;
+    --cor-texto-sec: #777777;
+    --cor-acao:      #2B2B2B;
+    --cor-borda:     #ECECEC;
+    --raio:          10px;
+    --sombra:        0 1px 3px rgba(16,24,40,.06), 0 6px 18px rgba(16,24,40,.05);
+    --sidebar-w:     250px;
+}
+
+/* ------------------------------ base ------------------------------ */
+body,
+body.sidebar-mini {
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif !important;
+    background: var(--cor-fundo) !important;
+    color: var(--cor-texto);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.content-wrapper {
+    background: var(--cor-fundo) !important;
+}
+
+h1, h2, h3, h4, h5, .card-title {
+    font-weight: 700;
+    color: var(--cor-texto);
+    letter-spacing: -.01em;
+}
+
+a { color: var(--cor-primaria); }
+a:hover { color: var(--cor-primaria-d); }
+
+/* ----------------------------- header ----------------------------- */
+.main-header.navbar {
+    background: var(--cor-card) !important;
+    border-bottom: 1px solid var(--cor-borda) !important;
+    box-shadow: none !important;
+    min-height: 62px;
+}
+
+.main-header .nav-link { color: var(--cor-texto-sec) !important; }
+.main-header .nav-link:hover { color: var(--cor-primaria) !important; }
+
+.main-header .badge {
+    font-size: .74rem;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+.main-header .badge.bg-primary,
+.main-header .badge.badge-primary {
+    background: var(--cor-primaria) !important;
+    color: #fff !important;
+}
+.main-header .badge.badge-warning {
+    background: #fdecec !important;
+    color: #d9433a !important;
+}
+
+/* ----------------------------- sidebar ---------------------------- */
+.main-sidebar,
+aside.main-sidebar {
+    background: var(--cor-card) !important;
+    border-right: 1px solid var(--cor-borda);
+    box-shadow: none !important;
+    width: var(--sidebar-w);
+}
+
+.main-sidebar .brand-link {
+    background: var(--cor-card) !important;
+    border-bottom: 1px solid var(--cor-borda) !important;
+    padding: 18px 12px;
+}
+
+.main-sidebar .brand-text {
+    color: var(--cor-texto) !important;
+    font-weight: 800 !important;
+    font-size: 1.15rem;
+    letter-spacing: -.02em;
+}
+.main-sidebar .brand-text::before {
+    content: '\f0a1';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--cor-primaria);
+    margin-right: 8px;
+}
+
+.main-sidebar .sidebar { padding: 10px 12px 24px; }
+
+.nav-sidebar .nav-link {
+    color: var(--cor-texto-sec) !important;
+    border-radius: var(--raio) !important;
+    font-weight: 500;
+    font-size: .93rem;
+    padding: 11px 13px !important;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    transition: background .15s, color .15s;
+}
+
+.nav-sidebar .nav-link p { margin: 0; }
+
+.nav-sidebar .nav-link i,
+.nav-sidebar .nav-link .nav-icon {
+    width: 20px;
+    text-align: center;
+    font-size: 1rem;
+    margin: 0 !important;
+}
+
+.nav-sidebar .nav-link:hover {
+    background: #f2f6ff !important;
+    color: var(--cor-primaria) !important;
+}
+
+.nav-sidebar .nav-link.active,
+.nav-sidebar > .nav-item > .nav-link.active {
+    background: var(--cor-primaria) !important;
+    color: #fff !important;
+    box-shadow: 0 4px 12px rgba(37,99,235,.28);
+}
+.nav-sidebar .nav-link.active i { color: #fff !important; }
+
+/* rodape da sidebar (sair + versao) */
+.sidebar-footer {
+    margin-top: 18px;
+    padding: 14px 13px calc(14px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--cor-borda);
+}
+.sidebar-footer .btn-sair {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: #fdecec;
+    color: #d9433a;
+    border: 0;
+    border-radius: var(--raio);
+    padding: 11px 13px;
+    font-weight: 600;
+    font-size: .9rem;
+}
+.sidebar-footer .versao {
+    display: block;
+    margin-top: 10px;
+    font-size: .72rem;
+    color: var(--cor-texto-sec);
+    text-align: center;
+}
+
+/* ------------------------------ cards ----------------------------- */
+.card, .small-box, .info-box {
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda) !important;
+    border-radius: var(--raio) !important;
+    box-shadow: var(--sombra) !important;
+}
+
+.card-header {
+    background: transparent !important;
+    border-bottom: 1px solid var(--cor-borda) !important;
+    padding: 16px 18px;
+    font-weight: 700;
+}
+.card-body { padding: 18px; }
+
+.small-box { color: var(--cor-texto); }
+.small-box h3 { font-weight: 800 !important; font-size: 1.9rem !important; }
+.small-box p  { color: var(--cor-texto-sec); font-weight: 500; }
+.small-box .icon i { opacity: .18; }
+.small-box .small-box-footer { border-radius: 0 0 var(--raio) var(--raio); }
+
+/* ---------------------------- botoes ------------------------------ */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: .88rem;
+    padding: 9px 16px;
+    transition: transform .08s, filter .15s;
+}
+.btn:active { transform: scale(.97); }
+.btn:focus-visible { outline: 2px solid var(--cor-primaria); outline-offset: 2px; }
+
+.btn-primary {
+    background: var(--cor-primaria) !important;
+    border-color: var(--cor-primaria) !important;
+}
+.btn-primary:hover { background: var(--cor-primaria-d) !important; }
+
+.btn-dark, .btn-acao {
+    background: var(--cor-acao) !important;
+    border-color: var(--cor-acao) !important;
+    color: #fff !important;
+}
+
+/* ---------------------------- formularios ------------------------- */
+.form-control, .custom-select, .select2-selection {
+    border-radius: 8px !important;
+    border: 1px solid var(--cor-borda) !important;
+    padding: 10px 12px;
+    font-size: .92rem;
+    min-height: 44px;              /* alvo de toque confortavel no mobile */
+}
+.form-control:focus {
+    border-color: var(--cor-primaria) !important;
+    box-shadow: 0 0 0 3px rgba(37,99,235,.12) !important;
+}
+label { font-weight: 600; font-size: .86rem; color: var(--cor-texto); }
+
+/* ---------------------------- tabelas ----------------------------- */
+.table { color: var(--cor-texto); }
+.table thead th {
+    background: #fafbfc;
+    border-bottom: 1px solid var(--cor-borda) !important;
+    border-top: 0 !important;
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    color: var(--cor-texto-sec);
+    white-space: nowrap;
+}
+.table td { border-top: 1px solid var(--cor-borda) !important; vertical-align: middle; }
+.table-hover tbody tr:hover { background: #f7f9ff; }
+
+/* toda tabela rola sozinha no mobile em vez de estourar a tela */
+.table-responsive, .dataTables_wrapper { -webkit-overflow-scrolling: touch; }
+
+/* ---------------------------- badges ------------------------------ */
+.badge-status,
+.badge {
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: .74rem;
+    padding: 5px 11px;
+}
+.badge-success, .bg-success { background: #e6f7ee !important; color: #1e9e57 !important; }
+.badge-warning, .bg-warning { background: #fff4e0 !important; color: #c47f12 !important; }
+.badge-danger,  .bg-danger  { background: #fdecec !important; color: #d9433a !important; }
+.badge-info,    .bg-info    { background: #e7f0ff !important; color: #2d7ff9 !important; }
+
+/* ---------------------------- modais ------------------------------ */
+.modal-content {
+    border: 0;
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(16,24,40,.18);
+}
+.modal-header { border-bottom: 1px solid var(--cor-borda); padding: 16px 20px; }
+.modal-footer { border-top: 1px solid var(--cor-borda); padding: 14px 20px; }
+
+/* ================================ MOBILE ============================ */
+
+/* tab bar inferior — só existe no celular */
+.tabbar { display: none; }
+
+@media (max-width: 991.98px) {
+
+    /* a sidebar vira gaveta; z-index: sidebar 50 > backdrop 46 > tabbar 45 */
+    .main-sidebar { z-index: 50 !important; }
+    #sidebar-overlay { z-index: 46 !important; }
+
+    .content-wrapper,
+    body.sidebar-mini .content-wrapper {
+        margin-left: 0 !important;
+        padding-bottom: 100px;          /* espaço para a tab bar */
+    }
+
+    .content-header { padding: 14px 12px 6px; }
+    .content-header h1 { font-size: 1.3rem; }
+    .content, .content-header, .container-fluid { padding-left: 12px; padding-right: 12px; }
+
+    .card-body { padding: 14px; }
+    .small-box h3 { font-size: 1.55rem !important; }
+
+    /* tabelas nunca estouram a largura da tela */
+    .table-responsive, .dataTables_wrapper .dataTables_scroll { overflow-x: auto !important; }
+    table.dataTable { width: 100% !important; }
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_length { float: none !important; text-align: left !important; }
+    .dataTables_wrapper .dataTables_filter input { width: 100%; margin-left: 0; }
+    .dataTables_wrapper .dataTables_paginate { float: none !important; text-align: center; padding-top: 10px; }
+
+    /* botoes e inputs viram alvos de toque de verdade */
+    .btn { padding: 11px 16px; }
+    .btn-group-sm > .btn, .btn-sm { padding: 8px 12px; }
+
+    .modal-dialog { margin: 10px; }
+
+    /* ---------------------- tab bar de aplicativo ---------------------- */
+    .tabbar {
+        display: flex;
+        position: fixed;
+        left: 0; right: 0; bottom: 0;
+        z-index: 45;
+        background: var(--cor-card);
+        border-top: 1px solid var(--cor-borda);
+        box-shadow: 0 -2px 14px rgba(16,24,40,.07);
+        padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+        justify-content: space-around;
+        align-items: flex-end;
+    }
+
+    .tabbar a, .tabbar button {
+        flex: 1;
+        background: none;
+        border: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+        color: var(--cor-texto-sec);
+        font-size: .62rem;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 4px 2px;
+        transition: color .15s, transform .08s;
+    }
+    .tabbar a i, .tabbar button i { font-size: 1.12rem; }
+    .tabbar a:active, .tabbar button:active { transform: scale(.94); }
+    .tabbar a.active { color: var(--cor-primaria); }
+
+    /* FAB central — acao principal do painel */
+    .tabbar .fab {
+        flex: 0 0 auto;
+        width: 58px; height: 58px;
+        margin-top: -28px;
+        border-radius: 50%;
+        background: var(--cor-primaria);
+        color: #fff;
+        border: 4px solid var(--cor-fundo);
+        box-shadow: 0 6px 18px rgba(37,99,235,.42);
+        justify-content: center;
+        gap: 0;
+    }
+    .tabbar .fab i { font-size: 1.35rem; }
+    .tabbar .fab span { display: none; }
+}
+
+/* modais sempre acima da gaveta e da tab bar */
+.modal { z-index: 1060; }
+.modal-backdrop { z-index: 1055; }
+
+@media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+}

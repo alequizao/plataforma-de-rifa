@@ -1,0 +1,44 @@
+# Plataforma de Rifa
+
+> Sistema web de código aberto para criar e administrar rifas e sorteios online.
+> Escrito em PHP com Laravel, vende cotas ("títulos") com pagamento por PIX,
+> avisa os compradores automaticamente pelo WhatsApp usando uma sessão própria
+> pareada por QR Code (protocolo Baileys) e permite trocar cores, tema e
+> tipografia do site pelo painel, sem editar código.
+
+O projeto resolve o fluxo completo de uma rifa online: o organizador cadastra a
+campanha e o prêmio; o comprador escolhe a quantidade de cotas (ou os números
+específicos), paga por PIX e recebe a confirmação no WhatsApp; ao final o
+organizador informa o número sorteado e o ganhador é publicado no site.
+
+Público-alvo: quem organiza rifas, ações entre amigos e sorteios beneficentes no
+Brasil, e desenvolvedores que precisam de uma base pronta para esse domínio.
+
+## Documentação
+
+- [README](README.md): visão geral, recursos, instalação e capturas de tela
+- [Integração com WhatsApp](WHATSAPP.md): arquitetura Baileys, rotas, conexão por QR Code, envio programático e diagnóstico
+- [Arquitetura](docs/ARQUITETURA.md): estrutura de pastas, modelo de dados e fluxos principais
+- [Perguntas frequentes](docs/FAQ.md): dúvidas de instalação, pagamento, WhatsApp e personalização
+
+## Conceitos do domínio
+
+- **Campanha (ou rifa)**: o sorteio em si, com prêmio, preço por cota e data
+- **Cota / título / número**: a unidade vendida; cada uma dá direito a um número da sorte
+- **Modo automático**: o sistema sorteia quais números o comprador recebe
+- **Modo manual**: o comprador escolhe os números em uma grade na tela
+- **Reserva**: cota separada aguardando pagamento; expira e volta a ficar disponível
+- **Pacote promocional**: atalho de compra em quantidade (+100, +500…), com um marcado como "popular"
+
+## Tecnologias
+
+- Back-end: PHP 7.4, Laravel 5.8, MySQL
+- Front-end: Blade, Bootstrap 5, CSS com design tokens (variáveis CSS), JavaScript sem framework
+- Pagamentos: Mercado Pago, Paggue, Asaas (PIX)
+- WhatsApp: Baileys (WhatsApp multi-dispositivos) através de API HTTP própria
+- Servidor: Apache ou Nginx
+
+## Opcional
+
+- [Histórico de versões](config/versao.php): mudanças de cada versão, lidas pela tela "Versões" do painel
+- [Tema visual](public/css/tema-gemeos.css): todos os tokens de cor, espaçamento e tipografia em um só arquivo

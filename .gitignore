@@ -1,0 +1,57 @@
+# ===== Dependências =====
+/vendor
+/node_modules
+
+# ===== Ambiente e segredos (NUNCA subir) =====
+.env
+.env.*
+!.env.example
+*.bak_original
+/storage/*.key
+credenciais.txt
+zerar_clientes.sql
+
+# ===== Backups criados durante manutenção =====
+*.bak
+*.bak-*
+*.bak-gemeos
+*.backup
+*.tar.gz
+*.zip
+*.sql
+
+# ===== Dados de clientes / uploads em produção =====
+/public/products/*
+!/public/products/.gitkeep
+/public/numbers/*
+!/public/numbers/.gitkeep
+/storage/app/public
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
+!/storage/logs/.gitkeep
+/public/storage
+/public/hot
+
+# ===== Logs e temporários =====
+*.log
+error_log
+npm-debug.log
+yarn-error.log
+.phpunit.result.cache
+
+# ===== Editores / SO =====
+/.idea
+/.vscode
+.DS_Store
+Thumbs.db
+
+# ===== Exceções: prints usados no README e no manual =====
+!/public/images/tutorial/
+!/public/images/tutorial/*
+!/docs/
+!/docs/**
+
+# ===== Source maps (inúteis em produção, pesam muito) =====
+*.map

@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+title: "Plataforma de Rifa — sistema de rifas e sorteios online"
+message: "Se referenciar este projeto, cite conforme abaixo."
+type: software
+authors:
+  - given-names: Alequizao
+    email: alequizao.dev@gmail.com
+repository-code: "https://github.com/alequizao/plataforma-de-rifa"
+url: "https://rifa.alequizao.com"
+abstract: >-
+  Sistema web em PHP/Laravel para criar e administrar rifas e sorteios online,
+  com venda de cotas por PIX, avisos automáticos no WhatsApp via sessão própria
+  pareada por QR Code (Baileys), painel administrativo e personalização visual
+  sem edição de código.
+keywords:
+  - rifa
+  - rifa online
+  - sorteio
+  - sorteio online
+  - script de rifa
+  - sistema de rifas
+  - php
+  - laravel
+  - pix
+  - whatsapp
+  - baileys
+license: LicenseRef-Proprietary
+version: "2.1.0"
+date-released: "2026-08-28"
