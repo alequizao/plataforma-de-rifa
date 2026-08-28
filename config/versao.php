@@ -11,10 +11,20 @@
 
 return [
 
-    'atual' => '2.3.0',
+    'atual' => '2.3.1',
     'data'  => '2026-08-28',
 
     'historico' => [
+
+        [
+            'versao' => '2.3.1',
+            'data'   => '2026-08-28',
+            'titulo' => 'Correção de JavaScript no painel',
+            'tipo'   => 'correcao',
+            'itens'  => [
+                ['tipo' => 'corrigido', 'txt' => 'Um script antigo de marcar o item ativo do menu dava erro em todas as páginas do painel (o item não existe mais) e interrompia o restante do JavaScript.'],
+            ],
+        ],
 
         [
             'versao' => '2.3.0',

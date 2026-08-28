@@ -295,21 +295,13 @@
             });
         })
 
+        // Marca o item ativo do menu antigo. Os ids não existem em todas as
+        // páginas (o menu novo usa classes), por isso a checagem de nulo:
+        // sem ela o erro parava o restante do JavaScript do painel.
         var url_atual = window.location.pathname;
-
-        if (url_atual == '/home') {
-            var d = document.getElementById("home");
-            d.className += " active";
-        } else if (url_atual == '/adicionar-sorteio') {
-            var d = document.getElementById("adicionar-sorteio");
-            d.className += " active";
-        } else if (url_atual == '/meus-sorteios') {
-            var d = document.getElementById("meus-sorteios");
-            d.className += " active";
-        } else if (url_atual == '/perfil') {
-            var d = document.getElementById("perfil");
-            d.className += " active";
-        }
+        var idAtivo = { '/home': 'home', '/adicionar-sorteio': 'adicionar-sorteio', '/meus-sorteios': 'meus-sorteios', '/perfil': 'perfil' }[url_atual];
+        var itemAtivo = idAtivo ? document.getElementById(idAtivo) : null;
+        if (itemAtivo) itemAtivo.className += " active";
 
         //console.log(url_atual);
     </script>
