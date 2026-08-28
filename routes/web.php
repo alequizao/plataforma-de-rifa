@@ -166,6 +166,8 @@ Route::middleware(['check'])->group(function () {
 
     // Sorteador: números, nomes e equipes são públicos (ferramenta aberta).
     Route::get('/sorteador', 'SorteadorController@index')->name('sorteador');
+    Route::post('/sorteador/salvar', 'SorteadorController@salvar')->name('sorteador.salvar')->middleware('throttle:30,1');
+    Route::get('/sorteador/resultado/{codigo}', 'SorteadorController@resultado')->name('sorteador.resultado');
     Route::get('/sitemap.xml', 'ProductController@sitemap')->name('sitemap');
     Route::get('sorteio/{id}/{tokenAfiliado?}', 'ProductController@product')->name('product');
     Route::get('resumo-rifa/{id}', 'MySweepstakesController@resumoRifa')->name('resumoRifa');

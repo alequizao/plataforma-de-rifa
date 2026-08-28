@@ -37,7 +37,144 @@ class SorteadorController extends Controller
             'ehAdmin'   => $ehAdmin,
             'campanhas' => $campanhas,
             'config'    => Environment::find(1),
+            'salvo'     => null,
         ]);
+    }
+
+    /**
+     * Salva um resultado para gerar link permanente (/sorteador/resultado/{codigo}).
+     *
+     * O sorteio em si é feito no navegador; aqui só guardamos o que foi
+     * sorteado, com data do servidor, para o participante conferir depois.
+     */
+    public function salvar(Request $request)
+    {
+        $r = $request->input('resultado');
+
+        if (!is_array($r) || empty($r['tipo'])) {
+            return response()->json(['ok' => false, 'msg' => 'Resultado inválido.']);
+        }
+
+        $tipo = (string) $r['tipo'];
+
+        if (!in_array($tipo, ['numeros', 'nomes', 'equipes', 'campanha'], true)) {
+            return response()->json(['ok' => false, 'msg' => 'Tipo de sorteio inválido.']);
+        }
+
+        // Só o organizador logado pode publicar resultado de campanha.
+        if ($tipo === 'campanha' && !\Illuminate\Support\Facades\Auth::check()) {
+            return response()->json(['ok' => false, 'msg' => 'Sem permissão.']);
+        }
+
+        $dados = [
+            'tipo'      => $tipo,
+            'itens'     => $this->limparLista($r['itens'] ?? [], $tipo === 'campanha'),
+            'suplentes' => $this->limparLista($r['suplentes'] ?? []),
+            'times'     => [],
+            'info'      => [],
+        ];
+
+        foreach ((array) ($r['times'] ?? []) as $time) {
+            $dados['times'][] = $this->limparLista($time);
+        }
+
+        foreach ((array) ($r['info'] ?? []) as $k => $v) {
+            if (is_scalar($v)) {
+                $dados['info'][preg_replace('/[^a-z]/', '', (string) $k)] = mb_substr(strip_tags((string) $v), 0, 120);
+            }
+        }
+
+        $json = json_encode($dados, JSON_UNESCAPED_UNICODE);
+
+        if ($json === false || strlen($json) > 60000) {
+            return response()->json(['ok' => false, 'msg' => 'Resultado grande demais para salvar.']);
+        }
+
+        if (count($dados['itens']) === 0 && count($dados['times']) === 0) {
+            return response()->json(['ok' => false, 'msg' => 'Nada para salvar.']);
+        }
+
+        // Limite simples por IP: 60 resultados por hora.
+        $ip = substr((string) $request->ip(), 0, 45);
+        $recentes = DB::table('sorteador_resultados')
+            ->where('ip', $ip)
+            ->where('created_at', '>=', date('Y-m-d H:i:s', time() - 3600))
+            ->count();
+
+        if ($recentes >= 60) {
+            return response()->json(['ok' => false, 'msg' => 'Muitos resultados salvos em pouco tempo. Tente mais tarde.']);
+        }
+
+        do {
+            $codigo = strtoupper(substr(bin2hex(random_bytes(6)), 0, 10));
+        } while (DB::table('sorteador_resultados')->where('codigo', $codigo)->exists());
+
+        DB::table('sorteador_resultados')->insert([
+            'codigo'     => $codigo,
+            'tipo'       => $tipo,
+            'dados'      => $json,
+            'ip'         => $ip,
+            'created_at' => date('Y-m-d H:i:s'),
+        ]);
+
+        return response()->json([
+            'ok'     => true,
+            'codigo' => $codigo,
+            'url'    => route('sorteador.resultado', ['codigo' => $codigo]),
+        ]);
+    }
+
+    /** Página pública de um resultado salvo. */
+    public function resultado($codigo)
+    {
+        $codigo = strtoupper(preg_replace('/[^A-Za-z0-9]/', '', (string) $codigo));
+
+        $linha = DB::table('sorteador_resultados')->where('codigo', $codigo)->first();
+
+        if (!$linha) {
+            abort(404);
+        }
+
+        $dados = json_decode($linha->dados, true) ?: [];
+        $dados['codigo'] = $linha->codigo;
+        $dados['url'] = route('sorteador.resultado', ['codigo' => $linha->codigo]);
+        $dados['quando'] = $this->dataBonita($linha->created_at);
+
+        return view('sorteador', [
+            'ehAdmin'   => false,
+            'campanhas' => collect(),
+            'config'    => Environment::find(1),
+            'salvo'     => $dados,
+        ]);
+    }
+
+    /** Lista de textos curtos (ou de ganhadores de campanha) sem HTML. */
+    private function limparLista($lista, $objetos = false)
+    {
+        $saida = [];
+
+        foreach (array_slice((array) $lista, 0, 1000) as $item) {
+            if ($objetos && is_array($item)) {
+                $saida[] = [
+                    'nome'     => mb_substr(strip_tags((string) ($item['nome'] ?? '')), 0, 120),
+                    'numero'   => mb_substr(strip_tags((string) ($item['numero'] ?? '')), 0, 20),
+                    'telefone' => mb_substr(strip_tags((string) ($item['telefone'] ?? '')), 0, 20),
+                ];
+            } elseif (is_scalar($item)) {
+                $saida[] = mb_substr(strip_tags((string) $item), 0, 200);
+            }
+        }
+
+        return $saida;
+    }
+
+    /** 28 de ago. de 2026, 11:55 */
+    private function dataBonita($sql)
+    {
+        $t = strtotime($sql);
+        $meses = ['jan.', 'fev.', 'mar.', 'abr.', 'mai.', 'jun.', 'jul.', 'ago.', 'set.', 'out.', 'nov.', 'dez.'];
+
+        return date('j', $t) . ' de ' . $meses[(int) date('n', $t) - 1] . ' de ' . date('Y', $t) . ', ' . date('H:i', $t);
     }
 
     /**

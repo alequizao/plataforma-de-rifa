@@ -11,10 +11,26 @@
 
 return [
 
-    'atual' => '2.2.2',
+    'atual' => '2.3.0',
     'data'  => '2026-08-28',
 
     'historico' => [
+
+        [
+            'versao' => '2.3.0',
+            'data'   => '2026-08-28',
+            'titulo' => 'Sorteador com a cara do sorteador.com.br',
+            'tipo'   => 'menor',
+            'itens'  => [
+                ['tipo' => 'novo', 'txt' => 'Visual novo do Sorteador, inspirado no sorteador.com.br: abas coloridas (Números, Nomes, Equipes, Rifas), fundo aquarela, frase grande "Sortear 1 número entre 1 e 100" e botão laranja.'],
+                ['tipo' => 'novo', 'txt' => 'Opções do sorteio em acordeão: ordem crescente/alfabética, mostrar resultado ao clicar no item, contagem regressiva, permitir repetição, ignorar repetidos e suplentes.'],
+                ['tipo' => 'novo', 'txt' => 'Tela de resultado com bolas, cards de informação (data, quantidade, intervalo) e ações: salvar, sortear sem repetir, alterar e voltar.'],
+                ['tipo' => 'novo', 'txt' => 'Salvar resultado gera um link permanente (/sorteador/resultado/CODIGO) para compartilhar por WhatsApp; a página salva mostra o mesmo resultado com data do servidor.'],
+                ['tipo' => 'novo', 'txt' => 'Importação de lista por arquivo .txt ou .csv (clique ou arraste) e escolha do critério de separação (linha, vírgula ou ponto e vírgula).'],
+                ['tipo' => 'novo', 'txt' => 'Equipes podem ser divididas por número de equipes ou por participantes por equipe.'],
+                ['tipo' => 'melhoria', 'txt' => 'Botão laranja "Sorteador" no menu do site e no menu do celular; o menu horizontal nunca mais quebra linha em telas pequenas.'],
+            ],
+        ],
 
         [
             'versao' => '2.2.2',

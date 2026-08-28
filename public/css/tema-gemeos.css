@@ -1977,3 +1977,61 @@ body.pagina-campanha .rifa-content > .campanha-corpo {
 .campanha-corpo .title-ranking h5 {
     margin: .25rem 0 .5rem !important;
 }
+
+/* ============================================================
+   29. LINK DO SORTEADOR NO MENU (pílula laranja, como o sorteador.com.br)
+   ============================================================ */
+.nav-horizontal-header a.nav-sorteador {
+    display: inline-block;
+    padding: 3px 11px 3px 9px;
+    border-radius: 999px;
+    background: #f97316;
+    color: #fff !important;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(249, 115, 22, .4);
+}
+
+.nav-horizontal-header a.nav-sorteador .icone { color: #fff; }
+.nav-horizontal-header a.nav-sorteador:hover,
+.nav-horizontal-header a.nav-sorteador.active { background: #ea580c; color: #fff !important; }
+
+.mobile-menu-link-sorteador .mobile-menu-icon { color: #f97316 !important; }
+.mobile-menu-link-sorteador em {
+    margin-left: auto;
+    padding: 2px 9px;
+    border-radius: 999px;
+    background: #f97316;
+    color: #fff;
+    font-size: .68rem;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+/* com o Sorteador o menu horizontal tem 4 itens: nunca quebra linha, rola de lado */
+.nav-horizontal-header {
+    align-items: center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+.nav-horizontal-header::-webkit-scrollbar { display: none; }
+.nav-horizontal-header li { flex: 0 0 auto; white-space: nowrap; }
+@media (max-width: 480px) {
+    .nav-horizontal-header { font-size: .8rem; }
+    .nav-horizontal-header li { margin-right: 9px; }
+    .nav-horizontal-header a.nav-sorteador { padding: 2px 9px 2px 7px; }
+}
+@media (max-width: 340px) {
+    .nav-horizontal-header { font-size: .7rem; }
+    .nav-horizontal-header li { margin-right: 7px; }
+    .nav-horizontal-header .icone { display: none; }
+}
+@media (max-width: 400px) {
+    .nav-horizontal-header { font-size: .74rem; }
+    .nav-horizontal-header li { margin-right: 8px; }
+}
+@media (max-width: 300px) {
+    .nav-horizontal-header { flex-wrap: wrap; row-gap: 6px; overflow: visible; }
+}

@@ -53,6 +53,10 @@ praticamente todo o tráfego desse tipo de campanha.
 |:---:|:---:|
 | <img src="docs/telas/ganhadores.webp" width="420" alt="Página pública de ganhadores com foto, prêmio e data da premiação"> | <img src="docs/telas/login.webp" width="420" alt="Tela de login do painel administrativo"> |
 
+| Sorteador online (números, nomes e equipes) | Resultado do sorteio com link para compartilhar |
+|:---:|:---:|
+| <img src="docs/telas/sorteador.webp" width="420" alt="Sorteador online com abas coloridas, frase Sortear 1 número entre 1 e 100 e botão laranja Sortear Agora"> | <img src="docs/telas/sorteador-resultado.webp" width="420" alt="Resultado do sorteio com os números em bolas, informações do sorteio e botões salvar, sortear sem repetir, alterar e voltar"> |
+
 </details>
 
 ---
@@ -66,6 +70,7 @@ praticamente todo o tráfego desse tipo de campanha.
 - **Pagamento por PIX** com baixa automática — sem precisar enviar comprovante
 - **Consulta dos próprios títulos pelo telefone**, sem criar conta nem senha
 - **Página pública de ganhadores**, com foto, prêmio e data da premiação
+- **Sorteador online grátis** (`/sorteador`), no estilo do sorteador.com.br: números, nomes (com lista por arquivo .txt/.csv e suplentes) e equipes, com contagem regressiva, revelação ao clicar e **link permanente do resultado** para compartilhar no WhatsApp
 
 ### Para quem organiza
 
@@ -75,6 +80,7 @@ praticamente todo o tráfego desse tipo de campanha.
 - **Pacotes promocionais** (+100, +200, +500…), com destaque para o mais vendido
 - **Área de afiliados** com comissão por venda
 - **Clientes**: cadastro manual, busca, edição, exclusão e exportação em CSV
+- **Sorteio do ganhador da campanha** dentro do Sorteador: só cotas pagas, gerador criptográfico no servidor e código de conferência
 - Manual ilustrado e histórico de versões dentro do próprio painel
 
 ---
