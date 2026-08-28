@@ -163,7 +163,7 @@
                             </li>
                         @endif
                         <li class="nav-item">
-                            <a href="{{ route('sorteador') }}" target="_blank" class="nav-link">
+                            <a href="{{ route('sorteador') }}" class="nav-link {{ request()->is('sorteador*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-dice-5"></i>
                                 <p>Sorteador</p>
                             </a>

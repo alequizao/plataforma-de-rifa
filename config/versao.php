@@ -11,10 +11,23 @@
 
 return [
 
-    'atual' => '2.2.1',
+    'atual' => '2.2.2',
     'data'  => '2026-08-28',
 
     'historico' => [
+
+        [
+            'versao' => '2.2.2',
+            'data'   => '2026-08-28',
+            'titulo' => 'Sorteador dentro do painel',
+            'tipo'   => 'correcao',
+            'itens'  => [
+                ['tipo' => 'melhoria', 'txt' => 'O Sorteador agora abre dentro do painel, na barra lateral, para quem está logado. O link foi retirado do menu do site.'],
+                ['tipo' => 'corrigido', 'txt' => 'O visual do Sorteador não carregava dentro do painel: os estilos viviam no tema do site, que o painel não usa. Foram movidos para um arquivo próprio, usado nos dois lugares.'],
+                ['tipo' => 'corrigido', 'txt' => 'Na tela da campanha automática, um script tentava preencher a grade de números que só existe nas rifas manuais — dava erro e ainda baixava a lista inteira de cotas sem necessidade.'],
+                ['tipo' => 'corrigido', 'txt' => 'A máscara de telefone e o SDK de pagamento quebravam o restante do JavaScript nas páginas onde os campos não existem.'],
+            ],
+        ],
 
         [
             'versao' => '2.2.1',

@@ -29,7 +29,11 @@ class SorteadorController extends Controller
             ? Product::where('visible', '=', 1)->orderBy('id', 'desc')->get(['id', 'name', 'slug', 'status'])
             : collect();
 
-        return view('sorteador', [
+        // Logado: abre dentro do painel, com a barra lateral.
+        // Visitante: página pública, com o layout do site.
+        $view = $ehAdmin ? 'painel.sorteador' : 'sorteador';
+
+        return view($view, [
             'ehAdmin'   => $ehAdmin,
             'campanhas' => $campanhas,
             'config'    => Environment::find(1),

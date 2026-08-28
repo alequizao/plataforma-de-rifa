@@ -177,10 +177,21 @@
             });
         });
 
-        setTimeout(getNumbers, 2000);
-        document.getElementById("message-raffles").innerHTML = "CARREGANDO AS COTAS...";
+        // A grade de cotas só existe nas rifas manuais. Nas automáticas
+        // estes elementos não são renderizados — sem a checagem o script
+        // quebrava e ainda disparava um AJAX que baixava a lista inteira
+        // de números à toa.
+        var areaCotas = document.getElementById("raffles");
+        var avisoCotas = document.getElementById("message-raffles");
+
+        if (areaCotas && avisoCotas) {
+            avisoCotas.innerHTML = "CARREGANDO AS COTAS...";
+            setTimeout(getNumbers, 2000);
+        }
 
         function getNumbers() {
+            if (!areaCotas) return;
+
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -192,20 +203,13 @@
                     idProductURL: '{{ $product[0]->id }}'
                 },
                 success: function(data) {
-
-                    //console.log('RAFFLE', data);
-
-                    document.getElementById("raffles").innerHTML = data.join('');
-
-                    document.getElementById("message-raffles").style.display = 'none';
-
-
+                    areaCotas.innerHTML = data.join('');
+                    if (avisoCotas) avisoCotas.style.display = 'none';
                 },
+                error: function() {
+                    if (avisoCotas) avisoCotas.innerHTML = "Não foi possível carregar as cotas. Recarregue a página.";
+                }
             });
-
-
-
-
         }
     </script>
     <script>

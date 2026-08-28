@@ -1418,7 +1418,6 @@ if (!$envioWpp['ok']) {
             ['loc' => $base . '/',             'prio' => '1.0', 'freq' => 'daily'],
             ['loc' => $base . '/sorteios',     'prio' => '0.9', 'freq' => 'daily'],
             ['loc' => $base . '/ganhadores',   'prio' => '0.8', 'freq' => 'weekly'],
-            ['loc' => $base . '/sorteador',    'prio' => '0.8', 'freq' => 'monthly'],
             ['loc' => $base . '/politica-privacidade', 'prio' => '0.3', 'freq' => 'yearly'],
         ];
 

@@ -120,7 +120,16 @@
     <script src="https://sdk.mercadopago.com/js/v2"></script>
 
     <script>
-        const mp = new MercadoPago("<?php echo @$data['social']->key_pix_public; ?>");
+        // Só instancia o SDK quando a chave pública está cadastrada
+        // (Painel > Meu perfil). Sem isso o SDK lança erro no console
+        // em toda página, inclusive nas que não usam pagamento.
+        var mp = null;
+        (function () {
+            var chave = "<?php echo @$data['social']->key_pix_public; ?>";
+            if (chave && typeof MercadoPago !== 'undefined') {
+                try { mp = new MercadoPago(chave); } catch (e) {}
+            }
+        })();
     </script>
 
     <style>
@@ -238,8 +247,6 @@
                                             class="icone bi bi-stars"></i> Campanhas</a></li>
                                 <li><a href="#" data-bs-toggle="modal" data-bs-target="#consultar-reservas">Meus
                                         títulos</a></li>
-                                <li><a class="{{ request()->is('sorteador') ? 'active' : '' }}"
-                                        href="{{ route('sorteador') }}">Sorteador</a></li>
                                 @if (env('AFILIADOS'))
                                     <li><a href="{{ route('afiliado.home') }}">Afiliados</a></li>
                                 @endif
@@ -303,9 +310,6 @@
                                                 números</span></a></li>
                                     <li><a class="mobile-menu-link" href="{{ route('ganhadores') }}"><i
                                                 class="bi bi-trophy mobile-menu-icon"></i><span>Ganhadores</span></a>
-                                    </li>
-                                    <li><a class="mobile-menu-link" href="{{ route('sorteador') }}"><i
-                                                class="bi bi-dice-5 mobile-menu-icon"></i><span>Sorteador</span></a>
                                     </li>
                                 </ul>
                             </section>
@@ -500,14 +504,17 @@
     @endif --}}
 
     <script>
-        document.getElementById('telephone').addEventListener('input', function(e) {
-            var aux = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
-            e.target.value = !aux[2] ? aux[1] : '(' + aux[1] + ') ' + aux[2] + (aux[3] ? '-' + aux[3] : '');
-        });
+        // Máscara de telefone. Os campos não existem em todas as páginas —
+        // sem a checagem, o erro interrompia o restante deste script
+        // (inclusive a função loading()).
+        ['telephone', 'telephone1'].forEach(function(id) {
+            var campo = document.getElementById(id);
+            if (!campo) return;
 
-        document.getElementById('telephone1').addEventListener('input', function(e) {
-            var aux = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
-            e.target.value = !aux[2] ? aux[1] : '(' + aux[1] + ') ' + aux[2] + (aux[3] ? '-' + aux[3] : '');
+            campo.addEventListener('input', function(e) {
+                var aux = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                e.target.value = !aux[2] ? aux[1] : '(' + aux[1] + ') ' + aux[2] + (aux[3] ? '-' + aux[3] : '');
+            });
         });
 
         function loading() {
